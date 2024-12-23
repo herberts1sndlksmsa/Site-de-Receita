@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receitas Culinárias</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Receitas Culinárias</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="entrada.html">Entradas</a></li>
+          <li><a href="prato-principal.html">Pratos Principais</a></li>
+          <li><a href="sobremesa.html">Sobremesas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<style>
+/* Estilo para a seção de comentários */
+.comments {
+  background: #f4f4f4; /* Fundo claro */
+  padding: 40px 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comments h2 {
+  font-size: 2rem;
+  color: #d35400; /* Cor do título */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.comment-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.comment-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.comment-box textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.comment-box button {
+  background: #d35400;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}   
+
+.comment-box button:hover {
+  background: #e67e22;
+}
+
+.comment-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.comment {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.comment p {
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.comment strong {
+  color: #d35400;
+}
+
+/* Responsividade para a seção de comentários */
+@media (max-width: 768px) {
+  .comments {
+    padding: 20px;
+  }
+
+  .comment-box textarea {
+    padding: 12px;
+  }
+
+  .comment-box button {
+    padding: 12px;
+  }
+}
+
+</style>
+  <main class="container">
+    <!-- Seção de Comentários -->
+    <section class="comments">
+      <h2>Comentários sobre as Receitas</h2>
+
+      <div class="comment-box">
+        <h3>Deixe seu comentário</h3>
+
+        <!-- Formulário para enviar comentários para o email -->
+        <form action="https://formspree.io/f/xwpkryrz" method="POST" class="contact-form">
+          <textarea id="comment-text" name="comment-text" placeholder="Escreva aqui..." required></textarea>
+          <button type="submit" class="submit-button">Enviar Comentário</button>
+        </form>
+      </div>
+
+      <div class="comment-list">
+        <div class="comment">
+          <p><strong>João:</strong> A receita de lasanha estava maravilhosa! Vou tentar fazer em casa.</p>
+        </div>
+        <div class="comment">
+          <p><strong>Maria:</strong> Adorei a receita de sobremesa, ficou deliciosa. Muito obrigado!</p>
+        </div>
+        <!-- Mais comentários podem ser adicionados aqui -->
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

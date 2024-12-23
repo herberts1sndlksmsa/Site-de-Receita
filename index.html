@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receitas Culinárias</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos para o menu hamburguer responsivo */
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      font-size: 30px;
+      color: #333;
+      background-color: transparent;
+      border: none;
+    }
+
+    .menu-icon:focus {
+      outline: none;
+    }
+
+    @media (max-width: 1020px) {
+      .nav-bar {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+      }
+
+      .nav-bar.show {
+        display: flex;
+      }
+
+      .nav-bar a {
+        text-align: center;
+        padding: 10px;
+        font-size: 1.2rem;
+        color: #333;
+        text-decoration: none;
+        display: block;
+      }
+
+      .nav-bar a:hover {
+        background-color: #f4f4f4;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .search-bar {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+    }
+
+    .search-icon {
+      display: block;
+      cursor: pointer;
+      font-size: 24px;
+      color: #333;
+      background-color: transparent;
+      border: none;
+    }
+
+    .search-icon:focus {
+      outline: none;
+    }
+
+    /* Estilo para a seção de Adicionar Receita */
+    .add-recipe {
+      background: #fff;
+      padding: 50px 30px;
+      margin-top: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      margin: 40px auto;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .add-recipe:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .add-recipe h2 {
+      font-size: 2.5rem;
+      color: #d35400;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .add-recipe p {
+      font-size: 1.2rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .add-recipe form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #e67e22;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .submit-button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #d35400;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .submit-button:hover {
+      background-color: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .submit-button:active {
+      transform: translateY(2px);
+    }
+
+    input[type="file"] {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="file"]:hover {
+      background-color: #f4f4f4;
+    }
+
+    .recipe-results {
+      max-height: 200px;
+      overflow-y: auto;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .recipe-results a {
+      display: block;
+      padding: 8px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .recipe-results a:hover {
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Receitas Culinárias</h1>
+      
+      <nav class="nav-bar" id="nav-bar">
+        <ul>
+          <li><a href="entrada.html">Entradas</a></li>
+          <li><a href="prato-principal.html">Pratos Principais</a></li>
+          <li><a href="sobremesa.html">Sobremesas</a></li>
+          <li><a href="comentario.html">Fale Conosco</a></li>
+        </ul>
+      </nav>
+      <center>
+      <button class="search-icon" id="search-icon">&#128269;</button>
+      </center>
+      <div class="search-bar" id="search-bar" style="display:none;">
+        <input type="text" id="search-input" placeholder="Pesquisar receita..." oninput="searchRecipes()">
+        <div id="recipe-results" class="recipe-results" style="display: none;"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="container">
+        <h2>Bem-vindo ao Mundo das Receitas!</h2>
+        <p>Descubra receitas incríveis para todas as ocasiões. Navegue pelas categorias ou adicione a sua própria receita!</p>
+      </div>
+    </section>
+
+    <section class="categories">
+      <div class="container">
+        <h2>Categorias</h2>
+        <div class="grid">
+          <div class="category-card">
+            <h3>Entradas</h3>
+            <p>Opções leves para começar sua refeição.</p>
+            <a href="entrada.html" class="btn">Explorar</a>
+          </div>
+          <div class="category-card">
+            <h3>Pratos Principais</h3>
+            <p>Delícias para satisfazer qualquer apetite.</p>
+            <a href="prato-principal.html" class="btn">Explorar</a>
+          </div>
+          <div class="category-card">
+            <h3>Sobremesas</h3>
+            <p>Doces perfeitos para fechar com chave de ouro.</p>
+            <a href="sobremesa.html" class="btn">Explorar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="add-recipe">
+      <div class="container">
+        <h2>Adicionar Receita</h2>
+        <form action="https://formspree.io/f/xdkoydog" method="POST" enctype="multipart/form-data">
+          <label for="recipe-name">Nome da Receita:</label><br>
+          <input type="text" id="recipe-name" name="nome-da-receita" required><br><br>
+
+          <label for="category-option">Escolha uma Categoria:</label><br>
+          <select id="category-option" name="categoria" required>
+            <option value="Entrada">Entrada</option>
+            <option value="Prato Principal">Prato Principal</option>
+            <option value="Sobremesa">Sobremesa</option>
+          </select><br><br>
+
+          <label for="ingredients">Ingredientes:</label><br>
+          <textarea id="ingredients" name="ingredientes" rows="4" required></textarea><br><br>
+
+          <label for="instructions">Modo de Preparo:</label><br>
+          <textarea id="instructions" name="modo-de-preparo" rows="6" required></textarea><br><br>
+
+          <label for="image">Imagem:</label><br>
+          <input type="file" id="image" name="imagem" accept="image/*"><br><br>
+
+          <input type="submit" value="Enviar Receita" class="submit-button">
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  document.getElementById('search-icon').addEventListener('click', function() {
+      document.getElementById('search-bar').style.display = 'block';
+    });
+
+    function searchRecipes() {
+  const input = document.getElementById('search-input').value.toLowerCase();
+  const resultsContainer = document.getElementById('recipe-results');
+  resultsContainer.innerHTML = '';
+  
+  // Lista de receitas e seus links correspondentes
+  const recipes = [
+    { name: 'Pavê de Chocolate', link: 'pave.html' },
+    { name: 'Torta de Limão', link: 'torta.html' },
+    { name: 'Torta gelada de Bis', link: 'bis.html' },
+    { name: 'Mousse de Maracujá', link: 'mousse.html' },
+    { name: 'Bombom de travessa', link: 'bombom.html' },
+    { name: 'Pão de Mel na Travessa', link: 'pao.html' },
+    { name: 'Bolo de Cenoura', link: 'cenoura.html' },
+    { name: 'Bolo de Leite em Pó', link: 'leiteempo.html' },
+    { name: 'Pavê de Maracujá', link: 'pavedemaracuja.html' },
+    { name: 'Milk shake de chocolate caseiro', link: 'caseiro.html' },
+    { name: 'Merengue de morango', link: 'merengue.html' },
+    { name: 'Mousse de limão com cobertura cremosa de chocolate', link: 'limao.html' },
+    { name: 'Feijoada', link: 'feijoada.html' },
+    { name: 'Risoto de Cogumelos', link: 'risoto.html' },
+    { name: 'Strogonoff de Frango', link: 'estrogonofe.html' },
+    { name: 'Filé de frango à parmegiana', link: 'parmegiana.html' },
+    { name: 'Coxa e sobrecoxa de frango com cerveja', link: 'frangoassado.html' },
+    { name: 'Picanha grelhada', link: 'picanha.html' },
+    { name: 'Panqueca de Presunto e Queijo', link: 'panqueca.html' },
+    { name: 'Lasanha de carne moída', link: 'lasanha.html' },
+    { name: 'Strogonoff de Carne', link: 'strogonoff.html' },
+    { name: 'Pastel de Presunto e Queijo', link: 'pastel.html' },
+    { name: 'Pizza enrolada', link: 'pizza.html' },
+    { name: 'Costelinha de Porco ao forno', link: 'costela.html' },
+    { name: 'Bruschetta de Tomate', link: 'bruschetta.html' },
+    { name: 'Salada Caprese', link: 'salada.html' },
+    { name: 'Mandioca Frita', link: 'mandioca.html' },
+    { name: 'Frango Frito Empanado', link: 'frango.html' },
+    { name: 'Bolinho de Arroz sem Ovo', link: 'bolinho.html' },
+    { name: 'Filé de Peixe Empanado', link: 'peixe.html' }
+  ];
+
+  const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(input));
+
+  if (filteredRecipes.length > 0) {
+    resultsContainer.style.display = 'block';
+    filteredRecipes.forEach(recipe => {
+      const recipeLink = document.createElement('a');
+      recipeLink.href = recipe.link;  // Link para a receita correspondente
+      recipeLink.textContent = recipe.name;
+      resultsContainer.appendChild(recipeLink);
+    });
+  } else {
+    resultsContainer.style.display = 'none';
+  }
+}
+
+  </script>
+</body>
+</html>

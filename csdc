@@ -1,0 +1,53 @@
+function searchRecipes() {
+  const input = document.getElementById('search-input').value.toLowerCase();
+  const resultsContainer = document.getElementById('recipe-results');
+  resultsContainer.innerHTML = '';
+  
+  // Lista de receitas e seus links correspondentes
+  const recipes = [
+    { name: 'Pavê de Chocolate', link: 'pave.html' },
+    { name: 'Torta de Limão', link: 'torta.html' },
+    { name: 'Torta gelada de Bis', link: 'bis.html' },
+    { name: 'Mousse de Maracujá', link: 'mousse.html' },
+    { name: 'Bombom de travessa', link: 'bombom.html' },
+    { name: 'Pão de Mel na Travessa', link: 'pao.html' },
+    { name: 'Bolo de Cenoura', link: 'cenoura.html' },
+    { name: 'Bolo de Leite em Pó', link: 'leiteempo.html' },
+    { name: 'Pavê de Maracujá', link: 'pavedemarcuja.html' },
+    { name: 'Milk shake de chocolate caseiro', link: 'caseiro.html' },
+    { name: 'Merengue de morango', link: 'merengue.html' },
+    { name: 'Mousse de limão com cobertura cremosa de chocolate', link: 'limao.html' },
+    { name: 'Feijoada', link: 'feijoada.html' },
+    { name: 'Risoto de Cogumelos', link: 'risoto.html' },
+    { name: 'Strogonoff de Frango', link: 'estrogonofe.html' },
+    { name: 'Filé de frango à parmegiana', link: 'parmegiana.html' },
+    { name: 'Coxa e sobrecoxa de frango com cerveja', link: 'frangoassado.html' },
+    { name: 'Picanha grelhada', link: 'picanha.html' },
+    { name: 'Panqueca de Presunto e Queijo', link: 'panqueca.html' },
+    { name: 'Lasanha de carne moída', link: 'lasanha.html' },
+    { name: 'Strogonoff de Carne', link: 'strogonoff.html' },
+    { name: 'Pastel de Presunto e Queijo', link: 'pastel.html' },
+    { name: 'Pizza enrolada', link: 'pizza.html' },
+    { name: 'Costelinha de Porco ao forno', link: 'costela.html' },
+    { name: 'Bruschetta de Tomate', link: 'bruschetta.html' },
+    { name: 'Salada Caprese', link: 'salada.html' },
+    { name: 'Mandioca Frita', link: 'mandioca.html' },
+    { name: 'Frango Frito Empanado', link: 'frango.html' },
+    { name: 'Bolinho de Arroz sem Ovo', link: 'bolinho.html' },
+    { name: 'Filé de Peixe Empanado', link: 'peixe.html' }
+  ];
+
+  const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(input));
+
+  if (filteredRecipes.length > 0) {
+    resultsContainer.style.display = 'block';
+    filteredRecipes.forEach(recipe => {
+      const recipeLink = document.createElement('a');
+      recipeLink.href = recipe.link;  // Link para a receita correspondente
+      recipeLink.textContent = recipe.name;
+      resultsContainer.appendChild(recipeLink);
+    });
+  } else {
+    resultsContainer.style.display = 'none';
+  }
+}

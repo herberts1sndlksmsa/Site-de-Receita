@@ -1,0 +1,191 @@
+/* Reset de estilos para garantir consistência */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background-color: #ff7043;
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-top: 10px;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ffe0b2;
+}
+
+/* INÍCIO: Seção de Introdução */
+.intro {
+  padding: 40px 20px;
+  background-color: #fff3e0;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 2em;
+  color: #ff7043;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* CATEGORIAS: Entradas, Pratos Principais, Sobremesas */
+.categories {
+  padding: 40px 20px;
+}
+
+.categories h2 {
+  text-align: center;
+  font-size: 2em;
+  color: #ff7043;
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 300px;
+  flex: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.category-card h3 {
+  font-size: 1.5em;
+  color: #ff7043;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.category-card .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff7043;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.category-card .btn:hover {
+  background-color: #e64a19;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* SEÇÃO DE RECEITAS - EXIBIÇÃO DOS CARDS DE CADA CATEGORIA */
+.recipe-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.recipe-card h3 {
+  font-size: 1.4em;
+  color: #ff7043;
+  margin-top: 15px;
+}
+
+.recipe-card p {
+  font-size: 1em;
+  color: #666;
+  margin: 15px 0;
+}
+
+.recipe-card .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff7043;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.recipe-card .btn:hover {
+  background-color: #e64a19;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #333;
+  color: white;
+  font-size: 1em;
+}
+
+footer p {
+  font-size: 0.9em;
+}
+
